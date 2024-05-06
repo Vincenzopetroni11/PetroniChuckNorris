@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chuck Norris Jokes</title>
+  <link rel="stylesheet"  type="text/css" href="css/style.css">
+</head>
+<body>
+
+  <div class="h1">
+    <h1>Chuck Norris Jokes</h1>
+  </div>
+
+
+  <div class="container">
+    <button id="jokeButton">Genera una Barzelletta</button>
+    <p id="jokeText"></p>
+  </div>
+  
+
+    
+  
+    <script>
+      const jokeButton = document.getElementById('jokeButton');
+      const jokeText = document.getElementById('jokeText');
+  
+      jokeButton.addEventListener('click', () => {
+        fetch('https://api.chucknorris.io/jokes/random')
+          .then(response => response.json())
+          .then(data => {
+            jokeText.innerText = data.value;
+          })
+          .catch(error => {
+            jokeText.innerText = 'Failed to fetch joke.';
+            console.error(error);
+          });
+      });
+    </script>
+
+  
+</body>
+</html>
